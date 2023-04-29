@@ -1,0 +1,26 @@
+class smile{
+  smile(float a, float b, float c, int d){
+    x=a; y=b; z=c; w=d;
+  }
+  float x,y,z; int w;
+  void Life(){
+    switch(w){
+      case 0: fill(0,0,0); break;
+      case 1: fill(255,0,0); break;
+      case 2: fill(0,255,0); break;
+      case 3: fill(0,0,255); break;
+    }
+  ellipse(x,y,z,z/3*2);
+  circle(x-z/5,y-z/6,z/5);
+  arc(x+z/5,y-z/6,z/5,z/5,PI,2*PI);
+  arc(x,y,z*2/3,z/5,0,PI);
+}
+}
+smile j,k,l;
+void setup(){
+  size(600,300);
+  j=new smile(100,100,100,1);
+  k=new smile(300,150,150,2);
+  l=new smile(500,200,80,3);
+  j.Life(); k.Life(); l.Life();
+}
