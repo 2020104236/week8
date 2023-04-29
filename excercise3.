@@ -1,0 +1,127 @@
+class character{
+  character(float a,float b,float c, int d){ x=a; y=b; z=c; w=d;}
+  float x,y,z; int w;
+  float vx=random(-10,10); float vy=random(-10,10);
+  void moving(){
+    x+=vx; y+=vy;
+    if(x>=width) { vx=-vx;}
+    else if(x<0) { vx=-vx;}
+    if(y>=height) { vy=-vy;}   
+    else if(y<0) { vy=-vy;}
+    switch (w){
+      case 1: bear(); break;
+      case 2: lion(); break;
+      case 3: kirby(); break;
+  }
+  }
+  void bear(){
+  fill(110,50,50);
+  noStroke();
+  circle(x,y,z);
+  circle(x-75*z/200,y-65*z/200,80*z/200);
+  circle(x+75*z/200,y-65*z/200,80*z/200);
+  fill(255);
+  ellipse(x-45*z/200,y-25*z/200,40*z/200,30*z/200);
+  ellipse(x+45*z/200,y-25*z/200,40*z/200,30*z/200);
+  fill(30);
+  ellipse(x-45*z/200,y-25*z/200,28*z/200,30*z/200);
+  ellipse(x+45*z/200,y-25*z/200,28*z/200,30*z/200);
+  noStroke();
+  fill(0);
+  ellipse(x,y+20*z/200,20*z/200,10*z/200);
+  stroke(0);
+  strokeWeight(3*z/200);
+  noFill();
+  stroke(0);
+  ellipse(x,y+35*z/200,80*z/200,60*z/200);
+  line(x,y+20*z/200,x,y+40*z/200);
+  noFill();
+  arc(x-10*z/200,y+40*z/200,20*z/200,10*z/200,0,PI);
+  arc(x+10*z/200,y+40*z/200,20*z/200,10*z/200,0,PI);
+}
+void lion (){
+  noStroke();
+  fill(204,130,0);
+  circle(x,y,z);
+  circle(x+0.35*z,y-0.35*z,0.167*z);
+  circle(x-0.35*z,y-0.35*z,0.167*z);
+  fill(0,0,0);
+  circle(x,y+0.05*z,0.06*z);
+  circle(x+0.2*z,y-0.1*z,0.04*z);
+  circle(x-0.2*z,y-0.1*z,0.04*z);
+  fill(255,255,255);
+  circle(x+0.04*z,y+0.1*z,0.1*z);
+  circle(x-0.04*z,y+0.1*z,0.1*z);
+  fill(0,0,0);
+  rect(x-0.26*z,y-0.18*z,0.1*z,0.015*z); 
+  rect(x+0.15*z,y-0.18*z,0.1*z,0.015*z); 
+}
+void kirby(){
+  fill(244,176,199);
+  circle(x,y,z);
+  eye(x,y,z);
+  mouth(x,y,z);
+  pink(x,y,z);
+}
+void eye(float x,float y,float z){
+  float a,b;
+  x=x-(0.13*z) ;
+  y=y-(0.08*z);
+  a=0.12*z;
+  b=0.29*z;
+  fill(5,115,192);
+  strokeWeight(4);
+  ellipse(x,y,a,b);
+  x=x+(0.26*z);
+  ellipse(x,y,a,b);
+  fill(0,0,0);
+  strokeWeight(1);
+  y=y-(0.03*z);
+  a=0.11*z; b=0.2*z;
+  ellipse(x,y,a,b);
+  x=x-(0.26*z);
+  ellipse(x,y,a,b);
+  fill(255,255,255);
+  y=y-(0.05*z);
+  a=0.07*z; b=0.12*z;
+  ellipse(x,y,a,b);
+  x=x+(0.26*z);
+  ellipse(x,y,a,b);
+}
+void mouth(float x,float y,float z){
+  float a,b;
+  strokeWeight(3);
+  fill(244,176,199);
+  y=y+(0.12*z); a=0.14*z; b=0.08*z; 
+  arc(x,y,a,b,radians(20),radians(160));
+}
+void pink(float x,float y,float z){
+  float a,b;
+  fill(235,105,151);
+  strokeWeight(0);
+  x=x+(0.32*z); y=y+(0.06*z);
+  a=0.19*z; b=0.11*z;
+  ellipse(x,y,a,b);
+  x=x-(0.64*z);
+  ellipse(x,y,a,b);
+}
+}
+character []a;
+void setup(){
+  size(1200,800);
+  a=new character[10];
+  for(int i=0; i<10; i++){
+    a[i]=new character(100*i+100,i*50+100,random(100,300),int(random(0,4)));
+  }
+}
+void draw(){
+  background(140,240,120);
+  for(int i=0; i<10; i++){
+    a[i].moving();
+  }
+}
+
+  
+  
+  
+    
