@@ -1,0 +1,17 @@
+class student{
+  student(){grade=int(random(60,100));}
+  int grade;
+  void compare(){
+    if(grade>80) println("Good!");
+    else println("Study!");
+  }
+}
+void setup(){
+  student siha,nouk;
+  siha =new student();
+  nouk =new student();
+  println("siha: ",siha.grade);
+  siha.compare();
+  println("nouk : ",nouk.grade);
+  nouk.compare();
+}
